@@ -1,0 +1,26 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	 <lightning:listView aura:id="listViewAccounts"
+    objectApiName="Account"
+    listName="AllAccounts"
+    rows="5"
+    showSearchBar="true"
+    showActionBar="false"
+    enableInlineEdit="true"
+    showRowLevelActions="false"
+/>
+    
+</aura:component>
+
+-------------------------------------------------- -------------------------------------------------- -----------------------------------------
+Controller
+({
+    handleSectionToggle: function (cmp, event) {
+        var openSections = event.getParam('openSections');
+
+        if (openSections.length === 0) {
+            cmp.set('v.activeSectionsMessage', "All sections are closed");
+        } else {
+            cmp.set('v.activeSectionsMessage', "Open sections: " + openSections.join(', '));
+        }
+    }
+})
